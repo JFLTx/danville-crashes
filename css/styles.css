@@ -36,6 +36,34 @@ h1 {
   bottom: 0;
 }
 
+#map + #manner-dropdown {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 5px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  font-family: "Libre Franklin", sans-serif;
+}
+
+.dropdown-select {
+  font-family: "Libre Franklin", sans-serif;
+  font-weight: 400;
+  color: #333;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  width: 100%;
+  max-width: 200px;
+}
+
+.dropdown-select:hover {
+  border-color: #007bff;
+}
+
 /* Following rules overwrite the Leaflet default popup styles, regardless of browser orientation. */
 
 .leaflet-popup-content {
