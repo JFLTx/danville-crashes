@@ -109,7 +109,9 @@
 
   // Helper function to render crashes
   function renderCrashes(data, crashLayers, filterKey) {
-    Object.values(crashLayers).forEach((layerGroup) => layerGroup.clearLayers());
+    Object.values(crashLayers).forEach((layerGroup) =>
+      layerGroup.clearLayers()
+    );
 
     data.forEach((row) => {
       const lat = parseFloat(row.Latitude);
@@ -143,7 +145,9 @@
       const popupContent = `
         <u>MasterFile</u>: ${row.MasterFile}<br>
         <u>KABCO</u>: ${layerProp.text}<br>
-        <u>Manner of Collision</u>: ${mannerOfCollisionMapping[row.MannerofCollisionCode]}<br>
+        <u>Manner of Collision</u>: ${
+          mannerOfCollisionMapping[row.MannerofCollisionCode]
+        }<br>
         <u>Factors</u>: ${factors.length > 0 ? factors.join(", ") : "None"}
       `;
 
@@ -199,7 +203,11 @@
         row.KABCO = "O";
       }
       // Check MannerofCollisionCode and map or set to UNKNOWN
-      if (!Object.keys(mannerOfCollisionMapping).includes(row.MannerofCollisionCode)) {
+      if (
+        !Object.keys(mannerOfCollisionMapping).includes(
+          row.MannerofCollisionCode
+        )
+      ) {
         row.MannerofCollisionCode = "UNKNOWN";
       }
     });
@@ -219,6 +227,55 @@
 
     // Add the legend to the map
     legendControl.addTo(map);
+
+    // Dynamically manage legend visibility based on screen size
+    function legendDisplay() {
+      const legendContainer = document.querySelector(".leaflet-control-layers");
+      const legendContent = legendContainer.querySelector(
+        ".leaflet-control-layers-list"
+      );
+
+      // Check if the toggle button already exists
+      let toggleButton = legendContainer.querySelector(".toggle-legend-btn");
+
+      if (window.innerWidth <= 768) {
+        legendContent.style.display = "none";
+
+        // If the button doesn't already exist, create it
+        if (!toggleButton) {
+          toggleButton = document.createElement("button");
+          toggleButton.className =
+            "btn btn-primary float-end toggle-legend-btn";
+          toggleButton.textContent = "Show Legend";
+
+          // Insert the button before the legend content
+          legendContainer.insertBefore(toggleButton, legendContent);
+
+          // Add toggle functionality for smaller screens
+          toggleButton.addEventListener("click", () => {
+            const isVisible = legendContent.style.display !== "none";
+            legendContent.style.display = isVisible ? "none" : "block";
+            toggleButton.textContent = isVisible
+              ? "Show Legend"
+              : "Hide Legend";
+          });
+        }
+      } else {
+        // For larger screens, always show the legend and remove the button if it exists
+        legendContent.style.display = "block";
+        if (toggleButton) {
+          toggleButton.remove();
+        }
+      }
+    }
+
+    // Call the function on initial load
+    legendDisplay();
+
+    // Reapply on window resize to handle dynamic screen changes
+    window.addEventListener("resize", () => {
+      legendDisplay();
+    });
 
     hideSpinner();
   }
