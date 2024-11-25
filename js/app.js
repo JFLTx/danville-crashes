@@ -162,6 +162,21 @@
       });
 
       marker.bindPopup(popupContent);
+
+      marker.on("mouseover", function () {
+        this.setStyle({
+          color: "#ff9900",
+          weight: 2,
+        });
+      });
+
+      marker.on("mouseout", function() {
+        this.setStyle({
+          color: "#444",
+          weight: 0.5,
+        });
+      });
+
       crashLayers[kabco].addLayer(marker);
     });
   }
