@@ -3,35 +3,35 @@
   const layerProps = [
     {
       id: "K",
-      text: "Fatal Crash",
+      text: "Fatal Crash (K)",
       color: "#0f4264",
       size: 12,
       checked: true,
     },
     {
       id: "A",
-      text: "Serious Injury Crash",
+      text: "Serious Injury Crash (A)",
       color: "#236d99",
       size: 10,
       checked: true,
     },
     {
       id: "B",
-      text: "Minor Injury Crash",
+      text: "Minor Injury Crash (B)",
       color: "#3db7e8",
       size: 7.5,
       checked: true,
     },
     {
       id: "C",
-      text: "Possible Injury Crash",
+      text: "Possible Injury Crash (C)",
       color: "#bce5f6",
       size: 6,
       checked: true,
     },
     {
       id: "O",
-      text: "Property Damage Only",
+      text: "Property Damage Only (O)",
       color: "#f0faff",
       size: 4,
       checked: true,
@@ -159,6 +159,7 @@
         opacity: 1,
         fillOpacity: 1,
         zIndex: 2000,
+        pane: "top",
       });
 
       marker.bindPopup(popupContent);
@@ -170,7 +171,7 @@
         });
       });
 
-      marker.on("mouseout", function() {
+      marker.on("mouseout", function () {
         this.setStyle({
           color: "#444",
           weight: 0.5,
@@ -202,6 +203,11 @@
         };
       },
     }).addTo(map);
+
+    // fit the bounds to the city limit
+    map.fitBounds(city.getBounds(), {
+      padding: [50, 50],
+    });
 
     // Initialize crashLayers and layersLabels with layerProps
     layerProps.forEach((prop) => {
