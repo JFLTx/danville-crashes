@@ -144,13 +144,12 @@
   );
 
   const darkTopo = L.tileLayer(
-    "https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}.png",
+    "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
     {
-      minZoom: 0,
-      maxZoom: 20,
       attribution:
-        '&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-      ext: "png",
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+      subdomains: "abcd",
+      maxZoom: 20,
     }
   );
 
@@ -177,9 +176,9 @@
   };
 
   const basemapThumbnails = {
-    Imagery: "images/imagery-thumb.jpg",
-    "Dark Gray": "images/darkTopo-thumb.jpg",
-    OpenStreetMap: "images/OSM-thumb.jpg",
+    Imagery: "images/imagery-thumb1.jpg",
+    "Dark Gray": "images/darkTopo-thumb1.jpg",
+    OpenStreetMap: "images/OSM-thumb1.jpg",
   };
 
   imagery.addTo(map);
