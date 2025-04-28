@@ -144,7 +144,7 @@
   );
 
   const darkTopo = L.tileLayer(
-    "https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.{ext}",
+    "https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}.png",
     {
       minZoom: 0,
       maxZoom: 20,
