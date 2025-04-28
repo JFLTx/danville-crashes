@@ -195,6 +195,14 @@ p {
   border: none;
 }
 
+hr {
+  border: none;
+  height: 2px;
+  background: linear-gradient(to right, #ffffff, #7f7f7f, #7f7f7f, #ffffff);
+  margin: 20px 0;
+  opacity: 0.25;
+}
+
 #legend {
   position: static; /* Let it flow naturally inside the side-panel */
   margin: 15px auto;
