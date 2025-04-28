@@ -178,8 +178,8 @@
 
   const basemapThumbnails = {
     Imagery: "images/imagery-thumb.jpg",
-    "Dark Gray": "images/darkTopo-thumb.JPG",
-    OpenStreetMap: "images/OSM-thumb.JPG",
+    "Dark Gray": "images/darkTopo-thumb.jpg",
+    OpenStreetMap: "images/OSM-thumb.jpg",
   };
 
   imagery.addTo(map);
@@ -325,7 +325,7 @@
     const [crashData, cityLimits, HIN, highwayPlan] = await Promise.all([
       d3.csv("data/Danville_Crashes_2019to2023_updated.csv"),
       d3.json("data/danville-city-limits.json"),
-      d3.json("data/danville-HIN.geojson"),
+      d3.json("data/danville-hin.geojson"),
       d3.json("data/danville-current-highway-plan.geojson"),
     ]);
 
